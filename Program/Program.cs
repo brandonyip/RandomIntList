@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 /*  Description: A program that generates a list of 10,000 numbers in random order each time it is run. 
- *   Each number in the list must be unique and be between 1 and 10,000 (inclusive)
+ *   Each number in the list must be unique and between 1 and 10,000 (inclusive)
  *  Author: Brandon Yip
 */
 namespace Program
@@ -19,6 +20,7 @@ namespace Program
         {
             IList<int> list = new List<int>(Enumerable.Range(min, listSize));
 
+            //Fisher-Yates algorithm
             for(int i = listSize-1; i >= min; i--)
             {
                 int j = random.Next(listSize - 1);
@@ -41,6 +43,26 @@ namespace Program
             }
         }
 
+
+
+        //test methods
+        //Tests the uniqueness of the list
+        public static bool TestUniqueness<T>(IList<T> list)
+        {
+            return list.Distinct().Count() == list.Count();
+        }
+
+        public static bool TestSize<T>(IList<T> list, int size)
+        {
+            return list.Count == size;
+        }
+
+
+
+
+
+
+
         //main frame
         public static void start()
         {
@@ -52,6 +74,12 @@ namespace Program
 
             //print the list of randomized integers
             printList(randomizedList);
+
+            //test uniquness of the list
+            Debug.Assert(TestUniqueness(randomizedList));
+
+            //test size of list
+            Debug.Assert(TestSize(randomizedList, max));
         }
 
 
