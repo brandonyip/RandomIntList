@@ -9,9 +9,9 @@ using System.Threading.Tasks;
  *   Each number in the list must be unique and between 1 and 10,000 (inclusive)
  *  Author: Brandon Yip
 */
-namespace Program
+namespace RandomIntList
 {
-    class Program
+    class RandomIntList
     {
         private static Random random = new Random();
 
@@ -23,7 +23,10 @@ namespace Program
             //Fisher-Yates algorithm
             for(int i = listSize-1; i >= min; i--)
             {
+                //select a random integer in the list
                 int j = random.Next(listSize - 1);
+
+                //swap random selected integer and the last integer
                 int temp = list[i];
                 list[i] = list[j];
                 list[j] = temp;
@@ -52,6 +55,7 @@ namespace Program
             return list.Distinct().Count() == list.Count();
         }
 
+        //Tests the size of the list
         public static bool TestSize<T>(IList<T> list, int size)
         {
             return list.Count == size;
