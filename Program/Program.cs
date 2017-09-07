@@ -57,7 +57,7 @@ namespace Program
 
         static void Main(string[] args)
         {
-            Console.WriteLine("This is a program that will generate a random ordered list of unique numbers between 1-10000. Press any key to continue...");
+            Console.WriteLine("This is a program that will generate a list of random unique numbers between 1-10000. Press any key to continue...");
             Console.ReadLine();
             start();
 
