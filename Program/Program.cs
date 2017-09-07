@@ -12,43 +12,57 @@ namespace Program
 {
     class Program
     {
+        private static Random random = new Random();
+
+        //generates the unique random list of integers between 1-10000
+        private static IList<int> generateRandomList(int min, int listSize)
+        {
+            IList<int> list = new List<int>(Enumerable.Range(min, listSize));
+
+            for(int i = listSize-1; i >= min; i--)
+            {
+                int j = random.Next(listSize - 1);
+                int temp = list[i];
+                list[i] = list[j];
+                list[j] = temp;
+            }
+
+            return list;
+        }
+
+        //prints out a list of integers
+        private static void printList(IList<int> list)
+        {
+            int i = 0;
+            foreach(var element in list)
+            {
+                Console.WriteLine("index: " + i + "       value: " + element);
+                i++;
+            }
+        }
+
+        //main frame
+        public static void start()
+        {
+            //variables
+            const int min = 1, max = 10000;
+
+            //generate the list of randomized integers
+            IList<int> randomizedList = generateRandomList(min, max);
+
+            //print the list of randomized integers
+            printList(randomizedList);
+        }
+
+
         static void Main(string[] args)
         {
-            //Start
-            Console.WriteLine("This is a program that will randomly shuffle a list.");
-            Console.WriteLine("Please enter a range of integers. Eg: (1 to 5)");
+            Console.WriteLine("This is a program that will generate a random ordered list of unique numbers between 1-10000. Press any key to continue...");
+            Console.ReadLine();
+            start();
 
-            //variables
-            int min, max;
-            bool validRange = true;
-            string userInput;
-
-            do
-            {
-                //User prompt for min value
-                Console.WriteLine("Enter an integer for the minimum value...");
-                //Try to convert input into an int
-                while(!int.TryParse(Console.ReadLine(), out min))
-                {
-                    Console.WriteLine("Invalid input. Please enter an integer.");
-                }
-
-                //User prompt for max value
-                Console.WriteLine("Enter an integer for the maximum value...");
-                //Try to convert input into an int
-                while (!int.TryParse(Console.ReadLine(), out max))
-                {
-                    Console.WriteLine("Invalid input. Please enter an integer.");
-                }
-                
-
-
-
-
-            } while (validRange);
-
-
-
+            Console.WriteLine("List generated. Press any key to exit program...");
+            Console.ReadLine();
         }
     }
 }
