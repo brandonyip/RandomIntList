@@ -16,7 +16,7 @@ namespace RandomIntList
         static void Main(string[] args)
         {
             Shuffle shuffle = new Shuffle();
-            shuffle.start();
+            shuffle.Start();
         }
     }
 }

@@ -24,13 +24,13 @@ namespace RandomIntList
             return list.Count() == size;
         }
 
-        public void main()
+        public void Main()
         {
             const int min = 1, max = 10000;
             Shuffle testShuffle = new Shuffle();
 
-            IList<int> randomizedList = testShuffle.generateRandomList(min, max);
-            testShuffle.printList(randomizedList);
+            IList<int> randomizedList = testShuffle.GenerateRandomList(min, max);
+            testShuffle.PrintList(randomizedList);
 
             //test uniquness of the list
             Debug.Assert(TestUniqueness(randomizedList));

@@ -14,9 +14,10 @@ namespace RandomIntList
         private static Random random = new Random();
 
         //generates the unique random list of integers between 1-10000
-        public IList<int> generateRandomList(int min, int listSize)
+        public IList<int> GenerateRandomList(int min, int listSize)
         {
             IList<int> list = new List<int>(Enumerable.Range(min, listSize));
+            int[] a1 = new int[40];
 
             //Fisher-Yates algorithm
             for (int i = listSize - 1; i >= min; i--)
@@ -34,7 +35,7 @@ namespace RandomIntList
         }
 
         //prints out a list of integers
-        public void printList(IList<int> list)
+        public void PrintList(IList<int> list)
         {
             int i = 0;
             foreach (var element in list)
@@ -46,7 +47,7 @@ namespace RandomIntList
 
 
         
-        public void start()
+        public void Start()
         {
             //variables
             const int min = 1, max = 10000;
@@ -55,10 +56,10 @@ namespace RandomIntList
             Console.ReadLine();
       
             //generate the list of randomized integers
-            IList<int> randomizedList = generateRandomList(min, max);
+            IList<int> randomizedList = GenerateRandomList(min, max);
 
             //print the list of randomized integers
-            printList(randomizedList);
+            PrintList(randomizedList);
 
             Console.WriteLine("List generated. Press any key to exit program...");
             Console.ReadLine();
