@@ -29,7 +29,7 @@ namespace RandomIntList
             const int min = 1, max = 10000;
             Shuffle testShuffle = new Shuffle();
 
-            IList<int> randomizedList = testShuffle.GenerateRandomList(min, max);
+            List<int> randomizedList = testShuffle.GenerateRandomList(min, max);
             testShuffle.PrintList(randomizedList);
 
             //test uniquness of the list

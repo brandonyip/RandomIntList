@@ -6,18 +6,23 @@ using System.Threading.Tasks;
 
 namespace RandomIntList
 {
-    /* Description: The class that generates the list of randomized integers.
-     * Author: Brandon Yip
-     */
+    /// <summary>
+    /// This class generates a list of 10,000 integers in random order.
+    /// Each number in the list must be unique and between 1 and 10,000 (inclusive)
+    /// </summary>
     public class Shuffle
     {
         private static Random random = new Random();
 
-        //generates the unique random list of integers between 1-10000
-        public IList<int> GenerateRandomList(int min, int listSize)
+        /// <summary>
+        /// Function that generates a random unique list of integers given a range
+        /// </summary>
+        /// <param name="min"> The minimum integer</param>
+        /// <param name="listSize">The size of the list</param>
+        /// <returns>List of integers</returns>
+        public static List<int> GenerateRandomList(int min, int listSize)
         {
-            IList<int> list = new List<int>(Enumerable.Range(min, listSize));
-            int[] a1 = new int[40];
+            List<int> list = new List<int>(Enumerable.Range(min, listSize));
 
             //Fisher-Yates algorithm
             for (int i = listSize - 1; i >= min; i--)
@@ -34,8 +39,13 @@ namespace RandomIntList
             return list;
         }
 
-        //prints out a list of integers
-        public void PrintList(IList<int> list)
+
+
+        /// <summary>
+        /// Given a list, prints out the corresponding indices and elements.
+        /// </summary>
+        /// <param name="list">List of integers</param>
+        public static void PrintList(List<int> list)
         {
             int i = 0;
             foreach (var element in list)
@@ -43,26 +53,6 @@ namespace RandomIntList
                 Console.WriteLine("index: " + i + "       value: " + element);
                 i++;
             }
-        }
-
-
-        
-        public void Start()
-        {
-            //variables
-            const int min = 1, max = 10000;
-
-            Console.WriteLine("This is a program that will generate a list of random unique numbers between 1-10000. Press any key to continue...");
-            Console.ReadLine();
-      
-            //generate the list of randomized integers
-            IList<int> randomizedList = GenerateRandomList(min, max);
-
-            //print the list of randomized integers
-            PrintList(randomizedList);
-
-            Console.WriteLine("List generated. Press any key to exit program...");
-            Console.ReadLine();
         }
     }
 }
