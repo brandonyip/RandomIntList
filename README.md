@@ -12,6 +12,6 @@ Use Visual Studio to build & run the program.
 Alternatively compiling in cmd is possible.
 https://superuser.com/questions/604953/how-can-i-compile-a-net-project-without-having-visual-studio-installed
 
-##Acknoledgements
+## Acknoledgements
 - Mersenne Twister implementation by Mitil Ooyama
 http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/VERSIONS/C-LANG/c-lang.html
