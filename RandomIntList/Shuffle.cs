@@ -28,10 +28,10 @@ namespace RandomIntList
             //Fisher-Yates algorithm using Mersenne Twister
             for (int i = listSize - 1; i >= min; i--)
             {
-                //Generate a random number using Mersenne Twister, modulo by i
+                //Generate a random integer using Mersenne Twister, modulo by i
                 int randomIndex = Convert.ToInt32(MT.genrand_Int32() % i);
 
-                //swap randomly selected integer and the integer at i
+                //swap value at randomIndex with the value at index i
                 int temp = list[i];
                 list[i] = list[randomIndex];
                 list[randomIndex] = temp;
