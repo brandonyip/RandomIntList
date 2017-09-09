@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 namespace RandomIntList
 {
     /// <summary>
-    /// This class generates a list of 10,000 integers in random order.
-    /// Each number in the list must be unique and between 1 and 10,000 (inclusive)
+    /// This class contains the logic to generate a list of 10,000 integers in random order.
+    /// Each number in the list must be unique and between 1 and 10,000 (inclusive).
     /// </summary>
     public class Shuffle
     {
-        private static Random random = new Random();
+        //External library that implements Mersenne Twister
+        private static Meisui.Random.MersenneTwister MT = new Meisui.Random.MersenneTwister();
 
         /// <summary>
         /// Function that generates a random unique list of integers given a range
@@ -24,21 +25,20 @@ namespace RandomIntList
         {
             List<int> list = new List<int>(Enumerable.Range(min, listSize));
 
-            //Fisher-Yates algorithm
+            //Fisher-Yates algorithm using Mersenne Twister
             for (int i = listSize - 1; i >= min; i--)
             {
-                //select a random integer in the list
-                int j = random.Next(listSize - 1);
+                //Generate a random number using Mersenne Twister, modulo by i
+                int randomIndex = Convert.ToInt32(MT.genrand_Int32() % i);
 
-                //swap random selected integer and the last integer
+                //swap randomly selected integer and the integer at i
                 int temp = list[i];
-                list[i] = list[j];
-                list[j] = temp;
+                list[i] = list[randomIndex];
+                list[randomIndex] = temp;
             }
 
             return list;
         }
-
 
 
         /// <summary>
@@ -47,12 +47,7 @@ namespace RandomIntList
         /// <param name="list">List of integers</param>
         public static void PrintList(List<int> list)
         {
-            int i = 0;
-            foreach (var element in list)
-            {
-                Console.WriteLine("index: " + i + "       value: " + element);
-                i++;
-            }
+            Console.WriteLine("[{0}]", string.Join(", ", list));
         }
     }
 }

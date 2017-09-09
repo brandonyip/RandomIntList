@@ -8,7 +8,11 @@ using System.Threading.Tasks;
 
 namespace RandomIntList
 {
-    public static class Program
+    /// <summary>
+    /// The main class that starts the program.
+    /// Author: Brandon Yip
+    /// </summary>
+    public static class Driver
     {
         static void Main(string[] args)
         {
